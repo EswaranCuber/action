@@ -12,7 +12,7 @@ const s3 =
   typeof process.env.CDN_BASE_URL !== 'undefined' &&
   new aws.S3({
     endpoint: protocolRelativeUrl.parse(process.env.CDN_BASE_URL).hostname,
-    s3BucketEndpoint: true,
+    s3BucketEndpoint: false,
     signatureVersion: 'v4'
   })
 

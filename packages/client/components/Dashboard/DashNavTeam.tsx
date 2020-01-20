@@ -31,7 +31,12 @@ const DashNavTeam = (props: Props) => {
   return (
     <IconAndLink>
       {!team.isPaid && <WarningIcon title='Team is disabled for nonpayment'>warning</WarningIcon>}
-      <DashNavItem href={`/team/${team.id}`} label={team.name} icon={'group'} onClick={onClick} />
+      <DashNavItem
+        href={`/team/${team.id}/${team.name}`}
+        label={team.name}
+        icon={'group'}
+        onClick={onClick}
+      />
     </IconAndLink>
   )
 }

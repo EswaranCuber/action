@@ -25,6 +25,7 @@ graphql`
     }
     team {
       id
+      name
       activeMeetings {
         id
       }
@@ -76,8 +77,9 @@ export const endNewMeetingTeamOnNext: OnNextHandler<
   EndNewMeetingMutation_team,
   OnNextHistoryContext
 > = (payload, context) => {
-  const {isKill, meeting} = payload
+  const {isKill, meeting, team} = payload
   const {atmosphere, history} = context
+  console.log('data checking', payload, context)
   if (!meeting) return
   const {id: meetingId, teamId} = meeting
   // const {} = getMeetingPathParams()
@@ -91,7 +93,7 @@ export const endNewMeetingTeamOnNext: OnNextHandler<
     }
   } else {
     if (isKill) {
-      history.push(`/team/${teamId}`)
+      history.push(`/team/${teamId}/${team.name}`)
       popEndNewMeetingToast(atmosphere, meetingId)
     } else {
       history.push(`/new-summary/${meetingId}`)

@@ -70,7 +70,7 @@ const Dashboard = (props: Props) => {
                 <UserDashboard {...p} notifications={viewer ? viewer.notifications : null} />
               )}
             />
-            <Route path='/team/:teamId' component={TeamRoot} />
+            <Route path='/team/:teamId/:nickname' component={TeamRoot} />
             <Route path='/newteam/:defaultOrgId?' component={NewTeam} />
           </Switch>
         </DashMain>

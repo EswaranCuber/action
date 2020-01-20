@@ -84,7 +84,7 @@ const Team = (props: Props) => {
   }
 
   const goToTeamDashboard = () => {
-    history.push(`/team/${teamId}/`)
+    history.goBack()
   }
 
   const hasOverlay = !isPaid
