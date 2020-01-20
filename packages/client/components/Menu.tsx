@@ -160,13 +160,7 @@ const Menu = forwardRef((props: Props, ref: any) => {
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
-      if (e.key === 'ArrowDown') {
-        e.preventDefault()
-        setSafeIdx(activeIdx + 1)
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault()
-        setSafeIdx(activeIdx - 1)
-      } else if (e.key === 'Enter' || (tabReturns && e.key === 'Tab')) {
+      if (e.key === 'Enter' || (tabReturns && e.key === 'Tab')) {
         e.preventDefault()
         const itemHandle = itemHandles.current[activeIdx]
         itemHandle && itemHandle.onClick(e)
@@ -186,7 +180,7 @@ const Menu = forwardRef((props: Props, ref: any) => {
       className={className}
       tabIndex={-1}
       onMouseDown={handleMouseDown}
-      onKeyDown={handleKeyDown}
+      //onKeyDown={handleKeyDown}
       ref={menuRef}
     >
       {makeSmartChildren(children)}

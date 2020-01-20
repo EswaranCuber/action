@@ -56,7 +56,7 @@ const DueDatePicker = (props: Props) => {
   const now = new Date()
   const nextYear = new Date(new Date().setFullYear(now.getFullYear() + 1))
   return (
-    <TallMenu ariaLabel='Pick a due date' {...menuProps}>
+    <TallMenu ariaLabel='Pick a due date' {...menuProps} tabReturns={true}>
       <PickerTitle>{'Change Due Date'}</PickerTitle>
       {showHint && <Hint>{'To remove, tap selected date'}</Hint>}
       <DayPicker
