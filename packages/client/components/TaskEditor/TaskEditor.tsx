@@ -19,6 +19,25 @@ import {UseTaskChild} from '../../hooks/useTaskChildFocus'
 import useTaskPlugins from './useTaskPlugins'
 import blockStyleFn from './blockStyleFn'
 
+type customDraftEditorCommand = 'fontsizeinc'
+const styleMap = {
+  FONT_SIZE_11: {
+    fontSize: 11
+  },
+  FONT_SIZE_13: {
+    fontSize: 13
+  },
+  FONT_SIZE_15: {
+    fontSize: 15
+  },
+  FONT_SIZE_18: {
+    fontSize: 18
+  },
+  FONT_SIZE_20: {
+    fontSize: 20
+  }
+}
+
 const RootEditor = styled('div')<{noText: boolean; readOnly: boolean | undefined}>(
   ({noText, readOnly}) => ({
     cursor: readOnly ? undefined : 'text',
@@ -121,7 +140,7 @@ const TaskEditor = (props: Props) => {
     editorRef.current && editorRef.current.blur()
   }
 
-  const nextKeyCommand = (command: DraftEditorCommand) => {
+  const nextKeyCommand = (command: DraftEditorCommand & customDraftEditorCommand) => {
     if (handleKeyCommand) {
       return handleKeyCommand(command, editorState, Date.now())
     }
@@ -184,6 +203,7 @@ const TaskEditor = (props: Props) => {
       ) : (
         <Editor
           spellCheck
+          customStyleMap={styleMap}
           blockStyleFn={blockStyleFn}
           editorState={editorState}
           handleBeforeInput={onBeforeInput}
