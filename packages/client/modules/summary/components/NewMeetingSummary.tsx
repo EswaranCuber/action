@@ -42,7 +42,7 @@ const NewMeetingSummary = (props: Props) => {
   useDocumentTitle(title)
   const slug = meetingTypeToSlug[meetingType]
   const meetingUrl = makeHref(`/${slug}/${teamId}`)
-  const teamDashUrl = `/team/${teamId}`
+  const teamDashUrl = `/team/${teamId}/${teamName}`
   const emailCSVUrl = `/new-summary/${meetingId}/csv`
   return (
     <div style={{backgroundColor: PALETTE.BACKGROUND_MAIN, minHeight: '100vh'}}>

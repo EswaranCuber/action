@@ -98,7 +98,8 @@ const AddOrgMutation: StandardMutation<TAddOrgMutation, HistoryLocalHandler> = (
         atmosphere.setAuthToken(authToken)
         popOrganizationCreatedToast(addOrg, {atmosphere})
         const teamId = addOrg.team && addOrg.team.id
-        history.push(`/team/${teamId}`)
+        const teamName = addOrg.team && addOrg.team.name
+        history.push(`/team/${teamId}/${teamName}`)
       }
     },
     onError

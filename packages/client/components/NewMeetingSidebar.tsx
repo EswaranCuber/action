@@ -75,7 +75,7 @@ const NewMeetingSidebar = (props: Props) => {
   const {error, submitMutation, submitting, onCompleted, onError} = useMutationProps()
   const {id: meetingId, team, name: meetingName, facilitatorUserId} = meeting
   const {id: teamId, name: teamName} = team
-  const teamLink = isDemoRoute() ? '/create-account' : `/team/${teamId}`
+  const teamLink = isDemoRoute() ? '/create-account' : `/team/${teamId}/${teamName}`
   const atmosphere = useAtmosphere()
   const {viewerId} = atmosphere
   const isFacilitator = viewerId === facilitatorUserId

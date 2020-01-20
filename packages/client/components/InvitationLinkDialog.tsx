@@ -39,7 +39,7 @@ const InvitationLinkDialog = (props: Props) => {
   }
   const {authToken} = atmosphere
   if (authToken) {
-    return <TeamInvitationAccept invitationToken={token} teamId={teamId!} />
+    return <TeamInvitationAccept invitationToken={token} teamId={teamId!} teamName={teamName} />
   }
   return <InvitationLinkAuthentication teamName={teamName!} invitationToken={token} />
 }

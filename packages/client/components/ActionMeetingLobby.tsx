@@ -104,7 +104,7 @@ const ActionMeetingLobby = (props: Props) => {
   }
 
   const goToTeamDashboard = () => {
-    history.push(`/team/${teamId}/`)
+    history.push(`/team/${teamId}/${teamName}`)
   }
   return (
     <MeetingStyles>

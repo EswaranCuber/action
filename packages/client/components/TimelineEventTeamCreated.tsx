@@ -28,7 +28,7 @@ class TimelineEventTeamCreated extends Component<Props> {
           ) : (
             <>
               {'Visit your '}
-              <StyledLink to={`/team/${teamId}`}>Team Dashboard</StyledLink>
+              <StyledLink to={`/team/${teamId}/${teamName}`}>Team Dashboard</StyledLink>
               {'.'}
             </>
           )}

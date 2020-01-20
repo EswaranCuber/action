@@ -45,7 +45,7 @@ const TeamInvitationErrorAccepted = (props: Props) => {
         ) : (
           <>
             <InlineCopy>Visit the</InlineCopy>{' '}
-            <StyledLink to={`/team/${teamId}`} title='Visit the Team Dashboard'>
+            <StyledLink to={`/team/${teamId}/${teamName}`} title='Visit the Team Dashboard'>
               Team Dashboard
             </StyledLink>
           </>

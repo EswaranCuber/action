@@ -50,7 +50,9 @@ class TeamInvitationDialog extends Component<Props> {
     const {authToken} = atmosphere
     const {teamId} = teamInvitation!
     if (authToken) {
-      return <TeamInvitationAccept invitationToken={invitationToken} teamId={teamId} />
+      return (
+        <TeamInvitationAccept invitationToken={invitationToken} teamId={teamId} teamName={teamId} />
+      )
     }
     if (ssoURL) {
       return <TeamInvitationSSO ssoURL={ssoURL} />

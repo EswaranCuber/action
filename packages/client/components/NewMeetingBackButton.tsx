@@ -34,14 +34,15 @@ const BackIcon = styled(Icon)({})
 interface Props {
   sendToMe: boolean
   teamId: string
+  teamName: string
 }
 const NewMeetingBackButton = (props: Props) => {
-  const {sendToMe, teamId} = props
+  const {sendToMe, teamId, teamName} = props
   const isDesktop = useBreakpoint(Breakpoint.NEW_MEETING_GRID)
   const BackButton = isDesktop ? BackButtonDesktop : BackButtonMobile
   const {history} = useRouter()
   const onClick = () => {
-    const nextRoute = sendToMe ? '/me' : `/team/${teamId}`
+    const nextRoute = sendToMe ? '/me' : `/team/${teamId}/${teamName}`
     history.push(nextRoute)
   }
   return (

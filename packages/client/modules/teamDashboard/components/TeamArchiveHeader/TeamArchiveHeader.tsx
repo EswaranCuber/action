@@ -33,8 +33,8 @@ const StyledIcon = styled(Icon)({
 })
 
 const TeamArchiveHeader = (props) => {
-  const {history, teamId} = props
-  const goToTeamDash = () => history.push(`/team/${teamId}/`)
+  const {history} = props
+  const goToTeamDash = () => history.goBack()
   return (
     <RootBlock>
       <HeadingBlock>

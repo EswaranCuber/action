@@ -91,7 +91,11 @@ const NewMeeting = (props: Props) => {
   if (!teamId || !selectedTeam) return null
   return (
     <NewMeetingBlock innerWidth={innerWidth} isDesktop={isDesktop}>
-      <NewMeetingBackButton teamId={teamId} sendToMe={sendToMeRef.current} />
+      <NewMeetingBackButton
+        teamId={teamId}
+        teamName={selectedTeam.name}
+        sendToMe={sendToMeRef.current}
+      />
       <IllustrationAndSelector>
         <NewMeetingIllustration idx={idx} setIdx={setIdx} />
         <NewMeetingMeetingSelector meetingType={meetingType} idx={idx} setIdx={setIdx} />

@@ -84,7 +84,6 @@ const Inception = styled('div')({
 })
 
 const ActionMeetingAgendaItems = (props: Props) => {
-  console.log('meeting', props)
   const {avatarGroup, toggleSidebar, meeting, handleGotoNext} = props
   const atmosphere = useAtmosphere()
   const {gotoNext, ref: gotoNextRef} = handleGotoNext

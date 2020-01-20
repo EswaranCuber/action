@@ -6,13 +6,14 @@ import useAtmosphere from '../hooks/useAtmosphere'
 interface Props {
   invitationToken: string
   teamId: string
+  teamName: string
 }
 
 const TeamInvitationAccept = (props: Props) => {
-  const {invitationToken, teamId} = props
+  const {invitationToken, teamId, teamName} = props
   const {history} = useRouter()
   const onCompleted = () => {
-    history.replace(`/team/${teamId}`)
+    history.replace(`/team/${teamId}/${teamName}`)
   }
   const atmosphere = useAtmosphere()
   useEffect(() => {

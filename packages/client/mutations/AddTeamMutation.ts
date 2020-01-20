@@ -54,7 +54,7 @@ const popTeamCreatedToast: OnNextHandler<AddTeamMutation_team, OnNextHistoryCont
     key: `teamCreated:${teamId}`,
     message: `Team created! Here's your new team dashboard for ${teamName}`
   })
-  history && history.push(`/team/${teamId}`)
+  history && history.push(`/team/${teamId}/${teamName}`)
 }
 
 export const addTeamTeamUpdater: SharedUpdater<AddTeamMutation_team> = (payload, {store}) => {

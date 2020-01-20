@@ -87,7 +87,7 @@ const TeamTasksHeader = (props: Props) => {
         <DashNavControl
           icon='archive'
           label='See Archived Tasks'
-          onClick={() => history.push(`/team/${teamId}/archive`)}
+          onClick={() => history.push(`/team/${teamId}/${teamName}/archive`)}
         />
 
         {/* Filter by Owner */}

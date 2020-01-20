@@ -79,9 +79,9 @@ export const endNewMeetingTeamOnNext: OnNextHandler<
 > = (payload, context) => {
   const {isKill, meeting, team} = payload
   const {atmosphere, history} = context
-  console.log('data checking', payload, context)
   if (!meeting) return
   const {id: meetingId, teamId} = meeting
+  const {name} = team
   // const {} = getMeetingPathParams()
   // if (!meetingSlug) return
   if (meetingId === RetroDemo.MEETING_ID) {
@@ -93,7 +93,7 @@ export const endNewMeetingTeamOnNext: OnNextHandler<
     }
   } else {
     if (isKill) {
-      history.push(`/team/${teamId}/${team.name}`)
+      history.push(`/team/${teamId}/${name}`)
       popEndNewMeetingToast(atmosphere, meetingId)
     } else {
       history.push(`/new-summary/${meetingId}`)

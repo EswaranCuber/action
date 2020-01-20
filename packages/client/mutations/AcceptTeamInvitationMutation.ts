@@ -157,7 +157,7 @@ const AcceptTeamInvitationMutation: StandardMutation<
         } else if (activeMeeting) {
           history.push(`/meet/${activeMeeting.id}`)
         } else {
-          history.push(`/team/${teamId}`)
+          history.push(`/team/${teamId}/${teamName}`)
         }
       }
     }
