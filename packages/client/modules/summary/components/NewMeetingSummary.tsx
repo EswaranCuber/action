@@ -54,6 +54,7 @@ const NewMeetingSummary = (props: Props) => {
         meetingUrl={meetingUrl}
         teamDashUrl={teamDashUrl}
         emailCSVUrl={emailCSVUrl}
+        member={null}
       />
     </div>
   )
