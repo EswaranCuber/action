@@ -7,20 +7,28 @@ import EmailBorderBottom from './EmailBorderBottom'
 
 interface Props {
   meeting: MeetingMembersWithTasks_meeting
+  member: any
 }
 
 const MeetingMembersWithTasks = (props: Props) => {
-  const {meeting} = props
+  const {meeting, member: sendingMember} = props
   const {meetingMembers} = meeting
   const meetingMembersWithTasks = meetingMembers.filter(
     ({doneTasks, tasks}) => (tasks ? tasks.length : 0) + (doneTasks ? doneTasks.length : 0) > 0
   )
+
   if (meetingMembersWithTasks.length === 0) return null
+
+  const {id: sendingMemberId} = sendingMember
+  meetingMembersWithTasks.sort(function(x, y) {
+    return x.id == sendingMemberId ? -1 : y.id == sendingMemberId ? 1 : 0
+  })
+  console.log('Meetingmember', meetingMembersWithTasks)
   return (
     <>
-      {meetingMembersWithTasks.map((member) => (
-        <MeetingMemberTaskSummaryList meetingMember={member} key={member.id} />
-      ))}
+      {meetingMembersWithTasks.map((member) => {
+        return <MeetingMemberTaskSummaryList meetingMember={member} key={member.id} />
+      })}
       <EmailBorderBottom />
     </>
   )

@@ -38,6 +38,7 @@ interface Props {
   teamDashUrl: string
   meetingUrl: string
   urlAction?: 'csv'
+  member: any
 }
 
 const pagePadding = {

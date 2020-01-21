@@ -11,10 +11,11 @@ import ServerEnvironment from '../../../../../server/email/ServerEnvironment'
 interface Props {
   meetingId: string
   context: GQLContext
+  member: any
 }
 
 const newMeetingSummaryEmailCreator = async (props: Props) => {
-  const {meetingId, context} = props
+  const {meetingId, context, member} = props
   const {authToken, dataLoader} = context
   const dataLoaderId = dataLoader.share()
   const environment = new ServerEnvironment(authToken, dataLoaderId)
@@ -22,7 +23,7 @@ const newMeetingSummaryEmailCreator = async (props: Props) => {
   const MeetingSummaryEmailRootSSR = require('../../../summary/components/MeetingSummaryEmailRootSSR')
     .default
   const bodyContent = await renderSSRElement(
-    <MeetingSummaryEmailRootSSR environment={environment} meetingId={meetingId} />,
+    <MeetingSummaryEmailRootSSR environment={environment} meetingId={meetingId} member={member} />,
     environment
   )
   const newMeeting = await dataLoader.get('newMeetings').load(meetingId)

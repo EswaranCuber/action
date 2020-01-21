@@ -16,9 +16,18 @@ export default async function sendNewMeetingSummary(newMeeting: Meeting, context
     .run()
   const {dataLoader} = context
   const meetingMembers = await dataLoader.get('meetingMembersByMeetingId').load(meetingId)
-  const userIds = meetingMembers.map(({userId}) => userId)
-  const users = await dataLoader.get('users').loadMany(userIds)
-  const emailAddresses = users.map(({email}) => email)
-  const emailContent = await newMeetingSummaryEmailCreator({meetingId, context})
-  return sendEmailContent(emailAddresses, emailContent)
+  {
+    meetingMembers.map(async (member) => {
+      const emailContent = await newMeetingSummaryEmailCreator({meetingId, context, member})
+      console.log(emailContent)
+      const user = await dataLoader.get('users').load(member.userId)
+      sendEmailContent(user.email, emailContent)
+    })
+  }
+  // const userIds = meetingMembers.map(({userId}) => userId)
+  // const users = await dataLoader.get('users').loadMany(userIds)
+  // console.log("meetingMembers:", meetingMembers, "users:", users)
+  // const emailAddresses = users.map(({email}) => email)
+  // const emailContent = await newMeetingSummaryEmailCreator({meetingId, context})
+  // return sendEmailContent(emailAddresses, emailContent)
 }

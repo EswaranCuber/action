@@ -24,10 +24,11 @@ const query = graphql`
 interface Props {
   environment: Environment
   meetingId: string
+  member: any
 }
 
 const MeetingSummaryEmailRootSSR = (props: Props) => {
-  const {environment, meetingId} = props
+  const {environment, meetingId, member} = props
   return (
     <QueryRenderer<MeetingSummaryEmailRootSSRQuery>
       environment={environment}
@@ -54,6 +55,7 @@ const MeetingSummaryEmailRootSSR = (props: Props) => {
             meetingUrl={meetingUrl}
             referrerUrl={referrerUrl}
             emailCSVUrl={emailCSVUrl}
+            member={member}
           />
         )
       }}

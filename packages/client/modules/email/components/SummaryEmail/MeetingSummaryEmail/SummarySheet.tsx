@@ -27,6 +27,7 @@ interface Props {
   teamDashUrl: string
   meetingUrl: string
   urlAction?: 'csv'
+  member: any
 }
 
 const sheetStyle = {
@@ -35,12 +36,14 @@ const sheetStyle = {
 }
 
 const SummarySheet = (props: Props) => {
-  const {emailCSVUrl, urlAction, meeting, meetingUrl, referrer, teamDashUrl} = props
+  const {emailCSVUrl, urlAction, meeting, meetingUrl, referrer, teamDashUrl, member} = props
   const {createdAt, meetingNumber, meetingType, team} = meeting
   const {name: teamName} = team
   const isDemo = !!props.isDemo
   const {id: meetingId} = meeting
   const meetingLabel = meetingTypeToLabel[meetingType]
+  // const { meetingMembers } = meeting
+
   return (
     <table width='100%' height='100%' align='center' bgcolor='#FFFFFF' style={sheetStyle}>
       <tbody>
@@ -58,7 +61,7 @@ const SummarySheet = (props: Props) => {
           referrer={referrer}
         />
         <CreateAccountSection isDemo={isDemo} />
-        <MeetingMembersWithTasks meeting={meeting} />
+        <MeetingMembersWithTasks meeting={meeting} member={member} />
         <MeetingMembersWithoutTasks meeting={meeting} />
         <RetroTopics imageSource={referrer === 'email' ? 'static' : 'local'} meeting={meeting} />
         {meetingType === ACTION && (
