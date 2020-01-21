@@ -19,11 +19,12 @@ const MeetingMembersWithTasks = (props: Props) => {
 
   if (meetingMembersWithTasks.length === 0) return null
 
-  const {id: sendingMemberId} = sendingMember
-  meetingMembersWithTasks.sort(function(x, y) {
-    return x.id == sendingMemberId ? -1 : y.id == sendingMemberId ? 1 : 0
-  })
-  console.log('Meetingmember', meetingMembersWithTasks)
+  if (sendingMember) {
+    const {id: sendingMemberId} = sendingMember
+    meetingMembersWithTasks.sort(function(x, y) {
+      return x.id == sendingMemberId ? -1 : y.id == sendingMemberId ? 1 : 0
+    })
+  }
   return (
     <>
       {meetingMembersWithTasks.map((member) => {
